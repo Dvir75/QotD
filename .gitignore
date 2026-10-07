@@ -10,3 +10,9 @@ _AppIcon.appiconset.bak/
 Tools/Sparkle/
 .sparkle_private_key
 *.pem
+
+# Local-only notes (not for GitHub)
+BUGS.md
+FUTURE.md
+PLAN.md
+DEV.md
