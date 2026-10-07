@@ -41,8 +41,8 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         ENABLE_HARDENED_RUNTIME: YES
         CODE_SIGN_ENTITLEMENTS: QotD/QotD.entitlements
-        CURRENT_PROJECT_VERSION: "19"
-        MARKETING_VERSION: "1.0.19"
+        CURRENT_PROJECT_VERSION: "20"
+        MARKETING_VERSION: "1.0.20"
         LD_RUNPATH_SEARCH_PATHS:
           - "$(inherited)"
           - "@executable_path/../Frameworks"
@@ -56,7 +56,7 @@ targets:
           - CFBundleURLName: com.dviramitai.QotD
             CFBundleURLSchemes:
               - qotd
-        SUFeedURL: https://github.com/Dvir75/QotD-updates/releases/latest/download/appcast.xml
+        SUFeedURL: https://github.com/Dvir75/QotD/releases/latest/download/appcast.xml
         SUPublicEDKey: If1MjrbprXwsJH6N96kQAFzyb31D/ZftxAlTXyCAkRk=
         SUEnableInstallerLauncherService: true
         SUAutomaticallyUpdate: false
@@ -97,8 +97,8 @@ targets:
         INFOPLIST_FILE: QotDWidget/Info.plist
         GENERATE_INFOPLIST_FILE: YES
         CODE_SIGN_ENTITLEMENTS: QotDWidget/QotDWidget.entitlements
-        CURRENT_PROJECT_VERSION: "19"
-        MARKETING_VERSION: "1.0.19"
+        CURRENT_PROJECT_VERSION: "20"
+        MARKETING_VERSION: "1.0.20"
         # Xcode's Debug dylib stub breaks when chronod launches the appex
         # outside the debugger — desktop widget stays on gray bars forever.
         ENABLE_DEBUG_DYLIB: NO

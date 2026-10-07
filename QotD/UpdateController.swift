@@ -1,7 +1,7 @@
 import Foundation
 import Sparkle
 
-/// Owns the Sparkle updater for in-app downloads from the public QotD-updates feed.
+/// Owns the Sparkle updater for in-app downloads from GitHub Releases.
 final class UpdateController {
     static let shared = UpdateController()
 
