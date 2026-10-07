@@ -1,0 +1,12 @@
+.DS_Store
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+_AppIcon.appiconset.bak/
+Tools/Sparkle/
+.sparkle_private_key
+*.pem

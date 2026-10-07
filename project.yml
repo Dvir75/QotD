@@ -1,0 +1,116 @@
+name: QotD
+options:
+  bundleIdPrefix: com.dviramitai
+  deploymentTarget:
+    macOS: "15.0"
+  createIntermediateGroups: true
+  xcodeVersion: "16.0"
+packages:
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    from: 2.7.0
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MACOSX_DEPLOYMENT_TARGET: "15.0"
+    DEVELOPMENT_TEAM: "55FZJ4852Q"
+    CODE_SIGN_STYLE: Automatic
+targets:
+  QotD:
+    type: application
+    platform: macOS
+    sources:
+      - path: QotD
+        excludes:
+          - AppIcon.iconset/**
+      - path: Shared
+      - path: Fonts
+        buildPhase: resources
+        excludes:
+          - OFL.txt
+          - BonaNova-OFL.txt
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.dviramitai.QotD
+        DEVELOPMENT_TEAM: "55FZJ4852Q"
+        CODE_SIGN_STYLE: Automatic
+        INFOPLIST_KEY_CFBundleDisplayName: QotD
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.lifestyle
+        INFOPLIST_KEY_CFBundleIconFile: AppIcon
+        ASSETCATALOG_COMPILER_APPICON_NAME: ""
+        GENERATE_INFOPLIST_FILE: YES
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_ENTITLEMENTS: QotD/QotD.entitlements
+        CURRENT_PROJECT_VERSION: "19"
+        MARKETING_VERSION: "1.0.19"
+        LD_RUNPATH_SEARCH_PATHS:
+          - "$(inherited)"
+          - "@executable_path/../Frameworks"
+    info:
+      path: QotD/Info.plist
+      properties:
+        CFBundleIconFile: AppIcon
+        ATSApplicationFontsPath: .
+        NSQuitAlwaysKeepsWindows: false
+        CFBundleURLTypes:
+          - CFBundleURLName: com.dviramitai.QotD
+            CFBundleURLSchemes:
+              - qotd
+        SUFeedURL: https://github.com/dvir75/QotD-updates/releases/latest/download/appcast.xml
+        SUPublicEDKey: If1MjrbprXwsJH6N96kQAFzyb31D/ZftxAlTXyCAkRk=
+        SUEnableInstallerLauncherService: true
+        SUAutomaticallyUpdate: false
+    entitlements:
+      path: QotD/QotD.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.network.client: true
+        com.apple.security.files.user-selected.read-write: true
+        com.apple.security.application-groups:
+          - 55FZJ4852Q.com.dviramitai.QotD
+        com.apple.security.temporary-exception.mach-lookup.global-name:
+          - $(PRODUCT_BUNDLE_IDENTIFIER)-spks
+          - $(PRODUCT_BUNDLE_IDENTIFIER)-spki
+    dependencies:
+      - target: QotDWidgetExtension
+        embed: true
+      - package: Sparkle
+    scheme:
+      testTargets: []
+
+  QotDWidgetExtension:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: QotDWidget
+      - path: Shared
+      - path: Fonts
+        buildPhase: resources
+        excludes:
+          - OFL.txt
+          - BonaNova-OFL.txt
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.dviramitai.QotD.widget
+        DEVELOPMENT_TEAM: "55FZJ4852Q"
+        CODE_SIGN_STYLE: Automatic
+        INFOPLIST_FILE: QotDWidget/Info.plist
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_ENTITLEMENTS: QotDWidget/QotDWidget.entitlements
+        CURRENT_PROJECT_VERSION: "19"
+        MARKETING_VERSION: "1.0.19"
+        # Xcode's Debug dylib stub breaks when chronod launches the appex
+        # outside the debugger — desktop widget stays on gray bars forever.
+        ENABLE_DEBUG_DYLIB: NO
+        LD_RUNPATH_SEARCH_PATHS:
+          - "$(inherited)"
+          - "@executable_path/../Frameworks"
+          - "@executable_path/../../../../Frameworks"
+        SKIP_INSTALL: YES
+        PRODUCT_NAME: QotDWidgetExtension
+    entitlements:
+      path: QotDWidget/QotDWidget.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.application-groups:
+          - 55FZJ4852Q.com.dviramitai.QotD
