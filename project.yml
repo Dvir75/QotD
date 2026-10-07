@@ -56,7 +56,7 @@ targets:
           - CFBundleURLName: com.dviramitai.QotD
             CFBundleURLSchemes:
               - qotd
-        SUFeedURL: https://github.com/dvir75/QotD-updates/releases/latest/download/appcast.xml
+        SUFeedURL: https://github.com/Dvir75/QotD-updates/releases/latest/download/appcast.xml
         SUPublicEDKey: If1MjrbprXwsJH6N96kQAFzyb31D/ZftxAlTXyCAkRk=
         SUEnableInstallerLauncherService: true
         SUAutomaticallyUpdate: false

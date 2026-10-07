@@ -16,7 +16,7 @@ Ideas deferred from planning. Review when shaping post-launch work.
 - **Appearance customization** — presets, font size, text color, background opacity (v1 is system default look only).
 - **Richer first-run** — sample quotes and/or onboarding that offers samples vs start blank (v1 is empty state only).
 - **iCloud sync** — sync quotes and settings across devices (v1 is local-only via App Group).
-- **Wider distribution** — notarized download and/or Mac App Store (v1 is install from Xcode / personal use).
+- **Wider distribution** — notarized download and/or Mac App Store (Sparkle + public `QotD-updates` releases exist; Gatekeeper still happier with notarization).
 
 ## Ideas
 

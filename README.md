@@ -46,7 +46,7 @@ xcodebuild -project QotD.xcodeproj -scheme QotD -configuration Debug \
 
 ## Updates (Sparkle)
 
-In-app updates download from the public [`QotD-updates`](https://github.com/dvir75/QotD-updates) repo (binaries + appcast only). Source stays in the private `QotD` repo.
+In-app updates download from the public [`QotD-updates`](https://github.com/Dvir75/QotD-updates) repo (binaries + appcast only). Source stays in the private [`QotD`](https://github.com/Dvir75/QotD) repo.
 
 **Ship a new version**
 

@@ -40,7 +40,7 @@
 	<key>SUEnableInstallerLauncherService</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://github.com/dvir75/QotD-updates/releases/latest/download/appcast.xml</string>
+	<string>https://github.com/Dvir75/QotD-updates/releases/latest/download/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>If1MjrbprXwsJH6N96kQAFzyb31D/ZftxAlTXyCAkRk=</string>
 </dict>
