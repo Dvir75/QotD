@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(AppModel.self) private var model
+    @State private var showUserGuide = false
 
     var body: some View {
         @Bindable var model = model
@@ -23,8 +24,26 @@ struct ContentView: View {
                 SettingsView()
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    showUserGuide = true
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                }
+                .help("User Guide")
+            }
+        }
+        .sheet(isPresented: $showUserGuide, onDismiss: {
+            UserGuideStore.markSeen()
+        }) {
+            UserGuideView()
+        }
         .onAppear {
             model.reloadFromDisk()
+            if !UserGuideStore.hasSeen {
+                showUserGuide = true
+            }
         }
         .onReceive(NotificationCenter.default.publisher(for: .qotdOpenQuotes)) { _ in
             model.sidebar = .quotes

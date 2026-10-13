@@ -69,6 +69,36 @@ enum RotationEngine {
         return store
     }
 
+    /// Jump rotation to a specific quote (clears pin, starts a fresh interval).
+    static func setActive(_ store: QotDStoreData, quoteId: UUID, now: Date = .now) -> QotDStoreData {
+        var store = store
+        guard store.quotes.contains(where: { $0.id == quoteId }) else { return store }
+        store.playback.currentQuoteId = quoteId
+        store.playback.isPinned = false
+        store.playback.nextChangeDate = now.addingTimeInterval(store.settings.intervalSeconds)
+        recordShown(&store, quoteId: quoteId)
+        return store
+    }
+
+    /// Pin a specific quote (makes it current and freezes rotation).
+    /// If that quote is already the pinned current, unpins instead.
+    static func pinQuote(_ store: QotDStoreData, quoteId: UUID, now: Date = .now) -> QotDStoreData {
+        var store = store
+        guard store.quotes.contains(where: { $0.id == quoteId }) else { return store }
+
+        if store.playback.currentQuoteId == quoteId, store.playback.isPinned {
+            store.playback.isPinned = false
+            store.playback.nextChangeDate = now.addingTimeInterval(store.settings.intervalSeconds)
+            return store
+        }
+
+        store.playback.currentQuoteId = quoteId
+        store.playback.isPinned = true
+        store.playback.nextChangeDate = nil
+        recordShown(&store, quoteId: quoteId)
+        return store
+    }
+
     /// Skip to the next quote immediately (clears pin).
     static func advanceToNext(_ store: QotDStoreData, now: Date = .now) -> QotDStoreData {
         var store = store
@@ -149,5 +179,12 @@ enum RotationEngine {
     static func currentQuote(in store: QotDStoreData) -> Quote? {
         guard let id = store.playback.currentQuoteId else { return nil }
         return store.quotes.first { $0.id == id }
+    }
+
+    private static func recordShown(_ store: inout QotDStoreData, quoteId: UUID) {
+        guard store.settings.rotationMode == .randomNoRepeat else { return }
+        var shown = Set(store.playback.shownQuoteIds)
+        shown.insert(quoteId)
+        store.playback.shownQuoteIds = Array(shown)
     }
 }

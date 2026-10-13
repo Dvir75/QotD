@@ -102,20 +102,29 @@ final class AppModel {
     func moveQuotes(from source: IndexSet, to destination: Int) {
         var ordered = quotes
         ordered.move(fromOffsets: source, toOffset: destination)
-        for (index, quote) in ordered.enumerated() {
-            if let storeIndex = store.quotes.firstIndex(where: { $0.id == quote.id }) {
-                store.quotes[storeIndex].sortOrder = index
-            }
+        reorderQuotes(ordered)
+    }
+
+    /// Commits a finished drag reorder. Rewrites array order and contiguous `sortOrder`.
+    func reorderQuotes(_ ordered: [Quote]) {
+        let ids = ordered.map(\.id)
+        guard Set(ids) == Set(store.quotes.map(\.id)), ids.count == store.quotes.count else { return }
+        guard ids != quotes.map(\.id) else { return }
+
+        var next = ordered
+        for index in next.indices {
+            next[index].sortOrder = index
         }
+        store.quotes = next
         persist()
     }
 
     private func reindexSortOrders() {
-        for (index, quote) in quotes.enumerated() {
-            if let storeIndex = store.quotes.firstIndex(where: { $0.id == quote.id }) {
-                store.quotes[storeIndex].sortOrder = index
-            }
+        var ordered = quotes
+        for index in ordered.indices {
+            ordered[index].sortOrder = index
         }
+        store.quotes = ordered
     }
 
     // MARK: - Settings
@@ -148,6 +157,20 @@ final class AppModel {
 
     func togglePin() {
         store = RotationEngine.togglePin(store)
+        lastSaveSucceeded = QuoteStore.save(store)
+        WidgetCenter.shared.reloadTimelines(ofKind: QotDWidgetKind.current)
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
+    func setActiveQuote(_ quote: Quote) {
+        store = RotationEngine.setActive(store, quoteId: quote.id)
+        lastSaveSucceeded = QuoteStore.save(store)
+        WidgetCenter.shared.reloadTimelines(ofKind: QotDWidgetKind.current)
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
+    func pinQuote(_ quote: Quote) {
+        store = RotationEngine.pinQuote(store, quoteId: quote.id)
         lastSaveSucceeded = QuoteStore.save(store)
         WidgetCenter.shared.reloadTimelines(ofKind: QotDWidgetKind.current)
         WidgetCenter.shared.reloadAllTimelines()

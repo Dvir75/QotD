@@ -11,6 +11,7 @@
 		05344358B980C81D9D281DDF /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6523D905229FEA9B7966E1 /* AppSettings.swift */; };
 		08CE6A6647CF403146B92067 /* QotDApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B01F16903C9897A78E8F2 /* QotDApp.swift */; };
 		0DCA720A477CE7596D616C17 /* QuoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B9EDF6AF515F4D131AAEE /* QuoteEditorView.swift */; };
+		0E7C4A91B2D84F6EA1C3D5F8 /* UserGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A3B4C5 /* UserGuideView.swift */; };
 		0DF2F628EC1EFE1797413081 /* QuoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B031005E93036FA341815D0 /* QuoteStore.swift */; };
 		1DE73F97E993AD3A2AE6262B /* AppIcon-opaque.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCBAEB84B37307218D01A20 /* AppIcon-opaque.png */; };
 		20636FA499B14B4A6B899F1F /* dock-preview-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF0FD90490E30783801A481 /* dock-preview-512.png */; };
@@ -117,6 +118,7 @@
 		8E9E51223CE57055BBE758FF /* QuoteAttributionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteAttributionLabel.swift; sourceTree = "<group>"; };
 		9855D64B6BD175223574BEFC /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		9D4405BA6AA0CFB4B682BC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A3B4C5 /* UserGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGuideView.swift; sourceTree = "<group>"; };
 		AB5B9EDF6AF515F4D131AAEE /* QuoteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteEditorView.swift; sourceTree = "<group>"; };
 		AB805E048DB438F563ABB9D7 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		ACC30B294465E2213EE197E6 /* CormorantGaramond-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-Italic.ttf"; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				84C620DBADA032F2D29000FE /* QuotesListView.swift */,
 				54A1488F4EC7E7A761A1D9EF /* SettingsView.swift */,
 				7248CAC6E9849BA99DE6AAC0 /* UpdateController.swift */,
+				1A2B3C4D5E6F708192A3B4C5 /* UserGuideView.swift */,
 				6C62DA196FE561E940C489C4 /* WidgetExtensionRelauncher.swift */,
 				7C5162E3569D662A7D10E751 /* Resources */,
 			);
@@ -411,6 +414,7 @@
 				3EEB5C6AC64F2FA5E8B99E28 /* RotationEngine.swift in Sources */,
 				CEB9D8CA817708FCE0FDD52E /* SettingsView.swift in Sources */,
 				2E5F7933D0770F37F978E23B /* UpdateController.swift in Sources */,
+				0E7C4A91B2D84F6EA1C3D5F8 /* UserGuideView.swift in Sources */,
 				596E2332B03C2FD221B54F03 /* WidgetExtensionRelauncher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
